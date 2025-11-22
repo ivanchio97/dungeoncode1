@@ -1,0 +1,72 @@
+.level {
+  background-image: url('../assets/background.png');
+  height: 100vh;
+  width: 100vw;
+  min-width: 1000px;
+  background-size: cover;
+  cursor: url('../assets/arrow.png'), auto;
+  padding: 0 15px;
+  user-select: none;
+}
+.door{
+  height: 122px;
+  width: 100px;
+  top:0px;
+  left:50px;
+}
+.door:hover{
+  cursor: url('../assets/hand.png'), auto;
+}
+.door img{
+  width: 100%;
+  height: 100%;
+}
+.up{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.down{
+  height: 150px;
+  width: 100%;
+  position: relative;
+}
+
+.chest{
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  z-index: 5;
+}
+.chest img{
+  height: 100%;
+  width: 100%;
+
+}
+.chest:hover{
+  cursor: url('../assets/hand.png'), auto;
+}
+.chest::after{
+  content: '';
+  background-color: black;
+  position: absolute;
+  width: 110px;
+  height: 50px;
+  top:55px;
+  right: -5px;
+  z-index: -1;
+  border-radius: 50%;
+  opacity: 0.3;
+}
+.fade-in {
+  opacity: 0;
+  transform: scale(0.97);
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

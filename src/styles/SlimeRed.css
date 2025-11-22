@@ -1,0 +1,28 @@
+.slime{
+  width: 100px;
+  position: absolute;
+  z-index: 5;
+  cursor: url('../assets/hand.png'), auto;
+}
+.slime img{
+  width: 100%;
+  z-index: 2;
+}
+.enemies{
+  position: relative;
+  width: 100%;
+  height: 280px;
+
+}
+.slime::after{
+  content: '';
+  background-color: black;
+  position: absolute;
+  width: 110px;
+  height: 50px;
+  top:60px;
+  right: -5px;
+  z-index: -1;
+  border-radius: 50%;
+  opacity: 0.3;
+}

@@ -1,0 +1,112 @@
+.code-modal{
+  position: fixed;
+  top:50px;
+  left:33vh;
+  height: 530px;
+  width: 900px;
+  background-color: #141414;
+  z-index: 100;
+  border: 15px solid #adadad;
+  border-radius: 30px;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 25px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  gap:15px;
+}
+.close-btn{
+  position: fixed;
+  top:33px;
+  right: 250px;
+  width: 50px;
+  height: 50px;
+  z-index: 101;
+  border: 3px solid black;
+  border-radius: 50%;
+  font-size: 30px;
+  cursor: url('../assets/hand.png'), auto;
+}
+.instructions{
+  text-align: center;
+  border-bottom: 1px solid #adadad;
+  height: 65px;
+  color: #4EB7FE;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+.code{
+  font-size: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.code div{
+  display: flex;
+  gap: 10px;
+}
+.code .input-short{
+  background-color: transparent;
+  border: 2px dashed white;
+  height: 35px;
+  color: white;
+  font-size: 25px;
+  width: 70px;
+  padding-left: 5px;
+  text-align: center;
+}
+.code .input-long{
+    background-color: transparent;
+  border: 2px dashed white;
+  height: 35px;
+  color: white;
+  font-size: 25px;
+  width: 80%;
+  padding-left: 5px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.espacio{
+  height: 50px;
+}
+
+.try-button{
+  height: 50px;
+  width: 120px;
+  margin: 0 auto;
+  border-radius: 50px;
+  font-size: 17px;
+  font-weight: bold;
+  background-color: white;
+  color: black;
+  border:none;
+  transition: all 0.2s ease;
+}
+
+.try-button:hover{
+  cursor: url('../assets/hand.png'), auto;
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+}
+.operator{
+  font-size: 30px;
+}
+.print{
+  color: #42B4F5;
+}
+.total{
+  color: orange;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
