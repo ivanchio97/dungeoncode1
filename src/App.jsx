@@ -28,7 +28,7 @@ function Wrapper(){
   return(
     <Routes>
             <Route path='/' element={<Menu />} />
-            <Route path='/game' element={<Room key={dataPlayer.level} />} />
+            <Route path='/game' element={<Room />} key={dataPlayer.level} />
             <Route path="/shop" element={<Shop />} />
     </Routes>
   )

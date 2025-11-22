@@ -42,6 +42,10 @@ const Shop = () => {
       }
     }
     function exitShop(){
+      setDataPlayer(prev => ({
+        ...prev,
+        level: prev.level + 1
+      }))
       navigate("/game")
     }
 

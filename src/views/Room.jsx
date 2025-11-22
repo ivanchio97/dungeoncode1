@@ -44,6 +44,7 @@ const Room = () => {
   const [slimeRoom, setSlimeRoom] = useState([]);
 
   useEffect(() => {
+    setSlimeStates([true, true, true, true]);
     const newslimes = [];
     for (let i = 0; i < 4; i++) {
       const num = Math.floor(Math.random() * 3);
@@ -56,7 +57,8 @@ const Room = () => {
       chest:true,
       levelProgress:0
     }))
-
+    console.log(newslimes)
+    console.log(dataPlayer.levelProgress)
   }, []);
 
   const deleteSlime = (ind, number) => {
