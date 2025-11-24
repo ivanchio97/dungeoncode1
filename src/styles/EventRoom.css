@@ -1,0 +1,75 @@
+.level3 {
+    background-image: url('../assets/background.png');
+    height: 100vh;
+    width: 100vw;
+    min-width: 1000px;
+    background-size: cover;
+    cursor: url('../assets/arrow.png'), auto;
+    padding: 0 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-family: "Roboto", sans-serif;
+    user-select: none;
+    position: relative;
+}
+.event{
+    display: flex;
+    height: 460px;
+    width: 780px;
+    background-color: #141414;
+    border: 10px solid rgb(0, 115, 255);
+    box-shadow: 0px 0px 15px white;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    align-items: center;
+    color: white;
+    padding: 35px;
+    gap: 25px;
+    font-weight: 300;
+}
+.event img{
+    width:40%;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px white;
+    
+}
+.event .info{
+    width: 60%;
+    font-size: 14px;
+    height: 70%;
+    line-height: 29px;
+    padding-left: 10px;
+}
+.event .info strong{
+    color: gold;
+    font-style: italic;
+    font-size: 20px;
+    font-weight: 400;
+}
+.event .options{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    gap: 20px;
+}
+.options button{
+    height: 40px;
+    clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+    background-color:#12474C;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+.options button:hover{
+    cursor: url('../assets/hand.png'), auto;
+    background-color:#196a71;
+}
+.options button .no{
+    color: rgb(235, 72, 72);
+}
+.options button .yes{
+    color: greenyellow;
+}

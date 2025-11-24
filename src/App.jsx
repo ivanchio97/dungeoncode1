@@ -6,6 +6,7 @@ import { SlimeProvider} from './contexts/SlimeProvider'
 import Menu from './views/Menu'
 import { ToastContainer } from 'react-toastify'
 import Shop from './views/Shop'
+import EventRoom from './views/EventRoom'
 
 
 function App() {
@@ -30,6 +31,7 @@ function Wrapper(){
             <Route path='/' element={<Menu />} />
             <Route path='/game' element={<Room />} key={dataPlayer.level} />
             <Route path="/shop" element={<Shop />} />
+            <Route path='/event' element={<EventRoom />} />
     </Routes>
   )
 }
