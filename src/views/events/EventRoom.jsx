@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react'
-import '../styles/EventRoom.css'
-import event1 from '../assets/evento1.jfif'
-import PlayerData from '../components/PlayerData'
-import EventBanner from '../components/EventBanner'
-import { Data } from '../contexts/DataProvider'
+import '../../styles/EventRoom.css'
+import event1 from '../../assets/evento1.jfif'
+import PlayerData from '../../components/PlayerData'
+import EventBanner from '../../components/EventBanner'
+import { Data } from '../../contexts/DataProvider'
 import { useNavigate } from 'react-router-dom'
 
 const EventRoom = () => {
