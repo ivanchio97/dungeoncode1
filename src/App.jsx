@@ -9,6 +9,7 @@ import Shop from './views/Shop'
 import EventRoom from './views/events/EventRoom'
 import EventRoom2 from './views/events/EventRoom2'
 import StringsEvent from './views/events/StringsEvent'
+import Puente from './views/Puente'
 
 
 function App() {
@@ -36,6 +37,7 @@ function Wrapper(){
             <Route path='/event' element={<EventRoom />} />
             <Route path='/event2' element = {<EventRoom2 />} />
             <Route path='/stringsEvent' element = {<StringsEvent />} />
+            <Route path='/puente' element={<Puente />} />
     </Routes>
   )
 }

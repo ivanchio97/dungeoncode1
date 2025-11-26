@@ -13,10 +13,11 @@ export const DataProvider = ({children}) =>{
     chest: true,
     doubleChest: false,
     actualEnemy:0,
-    eventChance: 80,
+    eventChance: 20,
     inventory: [],
     bow: false,
-    misteriousEvent : 0
+    misteriousEvent : 0,
+    shop: 4
   }
 
   const [dataPlayer, setDataPlayer] = useState(newGame)

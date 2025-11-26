@@ -54,11 +54,21 @@ const Room = () => {
     }
     setSlimeRoom(newslimes);
 
-    setDataPlayer(prev => ({
-      ...prev,
-      chest:true,
-      levelProgress:0
-    }))
+    setDataPlayer(prev => {
+      const updated = {
+        ...prev,
+      chest: true,
+      levelProgress: 0,
+      shop: prev.shop - 1
+      }
+
+      if(updated.shop < 1){
+      navigate('/shop')
+      }
+      return updated;
+    })
+    
+    
     console.log(newslimes)
     console.log(dataPlayer.levelProgress)
   }, []);
@@ -94,7 +104,7 @@ const Room = () => {
   }
 
   function openEvent() {
-    const ran = Math.floor(Math.random()*5)
+    const ran = Math.floor(Math.random()*2)
     console.log("Evento elegido: ",ran)
     if (ran === 0) {
       showToast("Encontraste un evento! 😲 ");
@@ -102,12 +112,8 @@ const Room = () => {
   } else if (ran === 1) {
       showToast("Encontraste un evento! 😵 ");
       navigate('/event2');
-  } else if (ran > 2) {
-      showToast("Encontraste la tienda! 🤑 ");
-      navigate('/shop');
-  }
-  
-    
+  } 
+   
   }
   function openNewLevel() {
     setDataPlayer((prev) => ({
@@ -115,6 +121,7 @@ const Room = () => {
       levelProgress: 0,
       level: prev.level + 1,
     }));
+    navigate('/puente')
     setSlimeStates([true, true, true, true]);
     toast.info('¡Has pasado al siguiente nivel! 💥', {
       position: 'top-right',

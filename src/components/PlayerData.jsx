@@ -60,6 +60,14 @@ const PlayerData = ()=>{
         }))
         alert("¡Item usado! ¡Ahora es más común encontrar eventos!")
       break;
+
+      case 6:
+        setDataPlayer(prev=>({
+          ...prev,
+          shop: prev.shop-1
+        }))
+        alert("¡Item usado! La tienda está más cerca ahora!")
+      break;
     }
     filtrarItem(item)
   }
