@@ -93,23 +93,19 @@ const Room = () => {
   }
 
   function openEvent() {
-    const ran = Math.floor(Math.random()*3)
-    switch(ran){
-      case 0:
-        showToast("Encontraste un evento! 😲 ")
-        navigate('/event')
-      break;
-
-      case 1:
-        showToast("Encontraste un evento! 😵 ")
-        navigate('/event2')
-      break;
-
-      case 2:
-        showToast("Encontraste la tienda! 🤑 ")
-        navigate('/shop')
-      break;
-    }
+    const ran = Math.floor(Math.random()*5)
+    console.log("Evento elegido: ",ran)
+    if (ran === 0) {
+      showToast("Encontraste un evento! 😲 ");
+      navigate('/event');
+  } else if (ran === 1) {
+      showToast("Encontraste un evento! 😵 ");
+      navigate('/event2');
+  } else if (ran > 2) {
+      showToast("Encontraste la tienda! 🤑 ");
+      navigate('/shop');
+  }
+  
     
   }
   function openNewLevel() {
