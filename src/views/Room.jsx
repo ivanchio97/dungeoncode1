@@ -12,6 +12,7 @@ import CodeModal from '../views/CodeModal';
 import { Data } from '../contexts/DataProvider';
 import { toast } from 'react-toastify';
 import ModalInfo from '../components/ModalInfo';
+import GameOver from '../components/GameOver';
 
 const Room = () => {
   //aqui irian los datos del player
@@ -82,14 +83,34 @@ const Room = () => {
     setSlimeStates(newstates);
   };
 
-  function openEvent() {
-    toast.info('¡Has encontrado la tienda! 🤑 ', {
+  function showToast(message){
+    toast.info(message, {
       position: 'top-right',
       autoClose: 3000,
       closeOnClick: true,
       theme: 'colored',
     });
-    navigate('/shop');
+  }
+
+  function openEvent() {
+    const ran = Math.floor(Math.random()*3)
+    switch(ran){
+      case 0:
+        showToast("Encontraste un evento! 😲 ")
+        navigate('/event')
+      break;
+
+      case 1:
+        showToast("Encontraste un evento! 😵 ")
+        navigate('/event2')
+      break;
+
+      case 2:
+        showToast("Encontraste la tienda! 🤑 ")
+        navigate('/shop')
+      break;
+    }
+    
   }
   function openNewLevel() {
     setDataPlayer((prev) => ({
@@ -127,6 +148,7 @@ const Room = () => {
 
   return (
     <div className="fade-in">
+     { dataPlayer.lives < 1 ?  <  GameOver /> : <></> }
       <div className="level">
         <PlayerData />
         <div className="up">

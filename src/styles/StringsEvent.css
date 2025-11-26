@@ -54,3 +54,18 @@
     background-color: #2893d1;
     cursor: url('../assets/hand.png'), auto;
 }
+.options2 button{
+    height: 40px;
+    clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+    background-color:#12474C;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    width: 200px;
+    margin-top: 20px;
+}
+.options2 button:hover{
+    cursor: url('../assets/hand.png'), auto;
+    background-color:#196a71;
+}

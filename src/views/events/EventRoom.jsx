@@ -48,7 +48,7 @@ const EventRoom = () => {
 
       <div className='event'>
         
-        {/* Banner siempre visible */}
+        
         <EventBanner
           title="El hombre misterioso"
           top={110}
@@ -56,7 +56,7 @@ const EventRoom = () => {
           scale={0.7}
         />
 
-        {/* Imagen siempre visible */}
+        
         <img src={event1} alt="" />
 
         {/* Aquí es donde se sustituye SOLO la parte narrativa */}
