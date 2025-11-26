@@ -1,0 +1,30 @@
+.adviser{
+    position: absolute;
+    right: 50px;
+    top: 50px;
+    height: 100px;
+    width: 100px;
+    background-color: rgb(19, 18, 18);
+    border: 4px solid white;
+    border-radius: 50%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.adviser img{
+    width: 90%;
+}
+ .number{
+    position: absolute;
+    top: 75px;
+    height: 35px;
+    width: 35px;
+    left: 30px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background-color: goldenrod;
+    text-align: center;
+    line-height: 35px;
+    font-size: 20px;
+}

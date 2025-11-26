@@ -13,6 +13,7 @@ import { Data } from '../contexts/DataProvider';
 import { toast } from 'react-toastify';
 import ModalInfo from '../components/ModalInfo';
 import GameOver from '../components/GameOver';
+import Advicer from '../components/Advicer';
 
 const Room = () => {
   //aqui irian los datos del player
@@ -145,6 +146,7 @@ const Room = () => {
   return (
     <div className="fade-in">
      { dataPlayer.lives < 1 ?  <  GameOver /> : <></> }
+     <Advicer />
       <div className="level">
         <PlayerData />
         <div className="up">
