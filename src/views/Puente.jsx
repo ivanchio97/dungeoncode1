@@ -11,7 +11,7 @@ const Puente = () => {
 
   return (
     <div>
-      
+      Cargando...
     </div>
   )
 }

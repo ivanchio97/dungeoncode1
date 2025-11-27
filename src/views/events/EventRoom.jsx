@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import '../../styles/EventRoom.css'
 import event1 from '../../assets/evento1.jfif'
 import PlayerData from '../../components/PlayerData'
@@ -8,10 +8,28 @@ import { useNavigate } from 'react-router-dom'
 
 const EventRoom = () => {
 
-  const { dataPlayer, setDataPlayer } = useContext(Data)
+  useEffect(()=>{
+    if(dataPlayer.misteriousEvent > 1 &&  dataPlayer.misteriousEvent < 20){
+      setMessage("Hola, sigo perdido y un slime me atacó 😭😔 ")
+      setQuestion("De nuevo, ¿Me regalarías 10 monedas?")
+    }
+    else if(dataPlayer.misteriousEvent > 19){
+      const code = Math.floor(Math.random()*10000) + 21927
+      setDataPlayer(prev => ({
+        ...prev,
+        coinsCode: code
+      }))
+      setMessage("¡Holaaa! He encontrado una máquina y usando las monedas que me regalaste, me dió un código. No entiendo que significa... ")
+      setQuestion(`El código es: ${code} `)
+    }
 
+  },[])
+
+  const { dataPlayer, setDataPlayer } = useContext(Data)
   const navigate = useNavigate()
   const [contenido, setContenido] = useState(null)
+  const [message, setMessage] = useState("¡Hola aventurero! Me he perdido en el laberinto, quiero comprar una Llave 🙁")
+  const [question, setQuestion] = useState("¿Me regalas 10 monedas?")
 
   const mensaje = (
     <div className='info2'>
@@ -35,11 +53,22 @@ const EventRoom = () => {
       alert("No tienes suficientes monedas!")
     }
     else {
+      setDataPlayer(prev => ({
+        ...prev,
+        misteriousEvent: prev.misteriousEvent + 1
+      }))
       setContenido(mensaje)
     }
   }
   function go(){
     navigate("/game")
+  }
+  function resetEvent(){
+    navigate("/game")
+    setDataPlayer(prev=>({
+      ...prev,
+      misteriousEvent:0
+    }))
   }
 
   return (
@@ -67,12 +96,11 @@ const EventRoom = () => {
             <h3>
               Cruzas la puerta y te encuentras con un hombre misterioso... <br />
               <strong>
-                ¡Hola aventurero! Me he perdido en el laberinto,
-                quiero comprar una Llave 🙁 <br />
-                ¿Me regalas 10 monedas?
+                {message} <br />
+                {question}
               </strong>
             </h3>
-
+          { dataPlayer.misteriousEvent < 19 ? (
             <div className='options'>
               <button onClick={() => response("yes")}>
                 <span className='yes'>¡Claro!</span> - Dar 10 monedas
@@ -82,6 +110,14 @@ const EventRoom = () => {
                 <span className='no'>¡No tengo!</span> - Huir
               </button>
             </div>
+            ) : (
+              <div className='options'>
+                <button onClick={() => resetEvent()}>
+                  <span className='yes'>¡Gracias!</span> 
+              </button>
+              </div>
+            )
+          }
           </div>
         )}
 

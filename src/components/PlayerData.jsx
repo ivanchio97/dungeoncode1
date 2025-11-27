@@ -23,6 +23,7 @@ const PlayerData = ()=>{
           lives: prev.lives + 1
         }))
         alert("¡Item usado! ¡Tienes una vida más!")
+        filtrarItem(item)
       break;
 
       case 2:
@@ -32,7 +33,7 @@ const PlayerData = ()=>{
           levelProgress: 4,
         }))
         alert("¡Item usado! Puedes abrir la puerta")
-        
+        filtrarItem(item)
       break;
       
       case 3:
@@ -41,6 +42,7 @@ const PlayerData = ()=>{
           doubleChest: true
         }))
         alert("¡Item usado! El próximo cofre contendrá el doble de monedas ")
+        filtrarItem(item)
       break;
 
       case 4:
@@ -49,7 +51,7 @@ const PlayerData = ()=>{
           bow: true
         }))
         alert("Selecciona un slime para eliminarlo! (No funciona con jefes ni obtendrás monedas por ello)")
-        //en la room, en la funcion deleteSlime puedo ocultar setShowCodeModal
+        filtrarItem(item)
       break;
 
       case 5:
@@ -59,17 +61,25 @@ const PlayerData = ()=>{
           eventChance: prev.eventChance + 5
         }))
         alert("¡Item usado! ¡Ahora es más común encontrar eventos!")
+        filtrarItem(item)
       break;
 
       case 6:
-        setDataPlayer(prev=>({
+        if(dataPlayer.shop < 2){
+          alert("No necesitas bajar más el numero. !La próxima sala ya es la tienda!")
+        }
+        else{
+          setDataPlayer(prev=>({
           ...prev,
           shop: prev.shop-1
         }))
         alert("¡Item usado! La tienda está más cerca ahora!")
+        filtrarItem(item)
+        }
+        
       break;
     }
-    filtrarItem(item)
+    
   }
 
   const {dataPlayer, setDataPlayer} = useContext(Data)

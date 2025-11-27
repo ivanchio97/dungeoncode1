@@ -4,6 +4,17 @@ export const Data = createContext(null)
 
 export const DataProvider = ({children}) =>{
 
+  const developerMode = [
+    { id: 2, nombre: "Llave", icono: "🔑", costo: 50, desc: "Puedes abrir cualquier puerta", compra: true, uid: crypto.randomUUID() },
+    { id: 2, nombre: "Llave", icono: "🔑", costo: 50, desc: "Puedes abrir cualquier puerta", compra: true, uid: crypto.randomUUID() },
+    { id: 2, nombre: "Llave", icono: "🔑", costo: 50, desc: "Puedes abrir cualquier puerta", compra: true, uid: crypto.randomUUID() },
+    { id: 2, nombre: "Llave", icono: "🔑", costo: 50, desc: "Puedes abrir cualquier puerta", compra: true, uid: crypto.randomUUID() },
+    { id: 2, nombre: "Llave", icono: "🔑", costo: 50, desc: "Puedes abrir cualquier puerta", compra: true, uid: crypto.randomUUID() },
+    { id: 2, nombre: "Llave", icono: "🔑", costo: 50, desc: "Puedes abrir cualquier puerta", compra: true, uid: crypto.randomUUID() },
+    { id: 2, nombre: "Llave", icono: "🔑", costo: 50, desc: "Puedes abrir cualquier puerta", compra: true, uid: crypto.randomUUID() },
+    { id: 2, nombre: "Llave", icono: "🔑", costo: 50, desc: "Puedes abrir cualquier puerta", compra: true, uid: crypto.randomUUID() },
+  ]
+
   const newGame = {
     icon: "🍕",
     lives: 3,
@@ -13,11 +24,12 @@ export const DataProvider = ({children}) =>{
     chest: true,
     doubleChest: false,
     actualEnemy:0,
-    eventChance: 20,
+    eventChance: 30,
     inventory: [],
     bow: false,
     misteriousEvent : 0,
-    shop: 4
+    shop: 4,
+    coinsCode: "X7S9ASH2190"
   }
 
   const [dataPlayer, setDataPlayer] = useState(newGame)

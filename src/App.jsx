@@ -10,6 +10,7 @@ import EventRoom from './views/events/EventRoom'
 import EventRoom2 from './views/events/EventRoom2'
 import StringsEvent from './views/events/StringsEvent'
 import Puente from './views/Puente'
+import EventRoom3 from './views/events/EventRoom3'
 
 
 function App() {
@@ -38,6 +39,7 @@ function Wrapper(){
             <Route path='/event2' element = {<EventRoom2 />} />
             <Route path='/stringsEvent' element = {<StringsEvent />} />
             <Route path='/puente' element={<Puente />} />
+            <Route path='/event3' element={<EventRoom3 />} />
     </Routes>
   )
 }
