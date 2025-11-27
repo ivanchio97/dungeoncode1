@@ -20,7 +20,9 @@ const GameOver = () => {
             eventChance: 30,
             inventory: [],
             bow: false,
-            misteriousEvent : 0
+            misteriousEvent : 0,
+            shop: 4,
+            coinsCode: "X7S9ASH2190"
         })
         navigate('/')
     }
