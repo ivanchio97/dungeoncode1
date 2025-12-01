@@ -3,9 +3,12 @@ import coinImage from '../assets/coin.gif'
 import heartImage from '../assets/heart.gif'
 import '../styles/playerData.css'
 import {Data} from '../contexts/DataProvider'
+import { useNavigate } from 'react-router-dom'
 
 
 const PlayerData = ()=>{
+
+  const navigate = useNavigate()
 
   function filtrarItem(item){
     const filtered = dataPlayer.inventory.filter((i)=> i.uid != item.uid )
@@ -76,7 +79,11 @@ const PlayerData = ()=>{
         alert("¡Item usado! La tienda está más cerca ahora!")
         filtrarItem(item)
         }
-        
+      break;
+      case 7:
+        alert("¡Item usado! Viajando hacia el portal...")
+        navigate('/event4')
+        filtrarItem(item)
       break;
     }
     

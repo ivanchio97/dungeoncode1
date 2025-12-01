@@ -12,12 +12,15 @@ const Shop = () => {
         { id: 2, nombre: "Llave", icono: "🔑", costo: 50, desc: "Puedes abrir cualquier puerta", compra: true },
         { id: 3, nombre: "Cofre x2", icono: "🧱", costo: 10 , desc: "Duplica las monedas del proximo cofre que abras", compra: true },
         { id: 4, nombre: "Arco", icono: "🏹", costo: 30, desc: "Elimina directamente al siguiente slime que elijas", compra: true },
-        { id: 5, nombre: "Gamepad", icono: "🎮", costo: 30, desc: "Aumenta la probabilidad general de encontrar más eventos", compra: true },
-        { id: 6, nombre: "Avance", icono: "⏩", costo: 40, desc: "Disminuye en 1 la cercanía a la proxima tienda", compra: true }
+        { id: 5, nombre: "Gamepad", icono: "🎮", costo: 20, desc: "Aumenta la probabilidad general de encontrar más eventos", compra: true },
+        { id: 6, nombre: "Avance", icono: "⏩", costo: 10, desc: "Disminuye en 1 la cercanía a la proxima tienda", compra: true },
+        { id: 7, nombre: "Portal", icono: "🌀", costo: 20, desc: "Lleva directamente al portal cuando se activa", compra: true }
+        
     ]
     const plantilla = [{},{},{}]
     const {dataPlayer, setDataPlayer} = useContext(Data)
     const [tienda, setTienda] = useState([])
+    
     useEffect(()=>{
       const randomshop = Math.floor(Math.random()*3)+4
       setDataPlayer(prev=>({
@@ -48,7 +51,7 @@ const Shop = () => {
       }
     }
     function exitShop(){
-      navigate("/puente")
+      navigate("/puente", {replace: true})
     }
 
   return (

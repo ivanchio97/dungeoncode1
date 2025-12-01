@@ -1,0 +1,114 @@
+.boss-level {
+  background-image: url('../assets/background.png');
+  height: 100vh;
+  width: 100vw;
+  min-width: 1000px;
+  background-size: cover;
+  cursor: url('../assets/arrow.png'), auto;
+  padding: 15px;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.boss-lives{
+    display: flex;
+}
+.boss-lives div{
+    font-size: 30px;
+}
+.boss-game{
+    width: 620px;
+    height: 340px;
+    background-color: #141414;
+    padding: 16px;
+    border: 12px solid white;
+}
+.boss-question{
+    font-size: 40px;
+    color: white;
+    margin-bottom: 14px;
+    border-bottom: 2px solid white;
+}
+.boss-input{
+    width: 100%;
+    background-color: transparent;
+    height: 40px;
+    font-size: 30px;
+    color: white;
+    font-weight: 400;
+    border: none;
+}
+.boss-input:focus{
+    outline: none;
+}
+.boss-img{
+    width: 400px;
+    height: 360px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+.boss-color{
+    width: 300px;
+    height: 300px;
+    background-color: blueviolet;
+    text-align: center;
+    line-height: 290px;
+    font-size: 80px;
+    border: 5px solid rgb(34, 33, 33);
+    border-radius: 50%;
+    position: relative;
+}
+.boss-color::after{
+    content: '';
+    background-color: #141414;
+    width: 150px;
+    height: 50px;
+    position: absolute;
+    bottom: -68px;
+    left: 70px;
+    border-radius: 50%;
+    opacity: 0.7;
+}
+.colors{
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    height: 300px;
+    justify-content: center;
+    gap: 40px;
+    position: relative;
+    
+}
+.item-color{
+    width: 40%;
+    background-color: blueviolet;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid rgb(23, 23, 23);
+    transition: all 0.4s ease;
+    text-align: center;
+    line-height: 112px;
+    font-size: 40px;
+    
+}
+.item-color:hover{
+    cursor: url('../assets/hand.png'), auto;
+    border: 4px solid white;
+}
+.timer{
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-color: black;
+    top: 100px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    line-height: 80px;
+    font-size: 40px;
+}

@@ -16,7 +16,6 @@ import GameOver from '../components/GameOver';
 import Advicer from '../components/Advicer';
 
 const Room = () => {
-  //aqui irian los datos del player
 
   const navigate = useNavigate();
   const [slimeStates, setSlimeStates] = useContext(SlimeData);
@@ -104,18 +103,22 @@ const Room = () => {
   }
 
   function openEvent() {
-    const ran = Math.floor(Math.random()*3)
+    const ran = Math.floor(Math.random()*5)
     console.log("Evento elegido: ",ran)
     if (ran === 0) {
       showToast("Encontraste un evento! 😲 ");
-      navigate('/event');
+      navigate('/event', {replace: true});
   } else if (ran === 1) {
       showToast("Encontraste un evento! 😵 ");
-      navigate('/event2');
+      navigate('/event2', {replace: true});
   } 
     else if(ran === 2){
       showToast("Encontraste un evento! 🥶 ");
-      navigate('/event3');
+      navigate('/event3', {replace: true});
+    }
+    else if(ran >= 3){
+      showToast("Encontraste un evento 💫 ")
+      navigate('/event4', {replace: true})
     }
    
   }

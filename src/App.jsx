@@ -11,6 +11,8 @@ import EventRoom2 from './views/events/EventRoom2'
 import StringsEvent from './views/events/StringsEvent'
 import Puente from './views/Puente'
 import EventRoom3 from './views/events/EventRoom3'
+import Boss1 from './views/bosses/Boss1'
+import EventRoom4 from './views/events/EventRoom4'
 
 
 function App() {
@@ -40,6 +42,8 @@ function Wrapper(){
             <Route path='/stringsEvent' element = {<StringsEvent />} />
             <Route path='/puente' element={<Puente />} />
             <Route path='/event3' element={<EventRoom3 />} />
+            <Route path='/event4' element={<EventRoom4 />} />
+            <Route path='/boss1' element={<Boss1 /> } />
     </Routes>
   )
 }

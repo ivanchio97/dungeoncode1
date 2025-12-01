@@ -24,7 +24,7 @@ export const DataProvider = ({children}) =>{
     chest: true,
     doubleChest: false,
     actualEnemy:0,
-    eventChance: 30,
+    eventChance: 50,
     inventory: [],
     bow: false,
     misteriousEvent : 0,
