@@ -24,8 +24,8 @@
 
 .tienda{
     display: flex;
-    height: 460px;
-    width: 780px;
+    height: 500px;
+    width: 1000px;
     background-color: #141414;
     border: 15px solid #adadad;
     justify-content: space-evenly;

@@ -18,7 +18,7 @@ export const DataProvider = ({children}) =>{
   const newGame = {
     icon: "🍕",
     lives: 3,
-    coins: 0,
+    coins: 200,
     levelProgress: 0,
     level: 1,
     chest: true,

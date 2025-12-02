@@ -14,10 +14,11 @@ const Shop = () => {
         { id: 4, nombre: "Arco", icono: "🏹", costo: 25, desc: "Elimina directamente al siguiente slime que elijas", compra: true },
         { id: 5, nombre: "Gamepad", icono: "🎮", costo: 20, desc: "Aumenta la probabilidad general de encontrar más eventos", compra: true },
         { id: 6, nombre: "Avance", icono: "⏩", costo: 10, desc: "Disminuye en 1 la cercanía a la proxima tienda", compra: true },
-        { id: 7, nombre: "Portal", icono: "🌀", costo: 20, desc: "Lleva directamente al portal cuando se activa", compra: true }
+        { id: 7, nombre: "Portal", icono: "🌀", costo: 20, desc: "Lleva directamente al portal cuando se activa", compra: true },
+        { id: 8, nombre: "Tienda", icono: "💰", costo: 5, desc: "Lleva directamente a la tineda", compra: true }
         
     ]
-    const plantilla = [{},{},{}]
+    const plantilla = [{},{},{}, {}]
     const {dataPlayer, setDataPlayer} = useContext(Data)
     const [tienda, setTienda] = useState([])
     

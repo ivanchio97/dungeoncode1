@@ -85,6 +85,11 @@ const PlayerData = ()=>{
         navigate('/event4')
         filtrarItem(item)
       break;
+      case 8:
+        alert("¡Item usado! Viajando hacia la tienda...")
+        navigate('/shop')
+        filtrarItem(item)
+      break;
     }
     
   }
