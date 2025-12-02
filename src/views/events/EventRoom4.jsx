@@ -20,9 +20,13 @@ const EventRoom4 = () => {
     else if(answer == 2) {
       navigate('/event2')
     }
-    else{
+    else if(answer == 3) {
       navigate('/event3')
     }
+    else {
+      navigate('/event5')
+    }
+
   }
   function go(){
     navigate("/stringsEvent")
@@ -47,13 +51,12 @@ const EventRoom4 = () => {
 
           <div className='info'>
             <h3>
-              Encuentras un gran portal, su inmensidad te hace retroceder un poco <br/>
-              <strong>
-                ¿A dónde quieres ir?
+              Encuentras un gran portal, su inmensidad te hace retroceder un poco. 
+              <strong> ¿A dónde quieres ir?
               </strong>
             </h3>
 
-            <div className='options'>
+            <div className='options portal'>
               <button onClick={() => response(1)}>
                 <span > El hombre misterioso</span>
               </button>
@@ -65,6 +68,11 @@ const EventRoom4 = () => {
               <button onClick={() => response(3)}>
                 <span >La máquina antigua</span>
               </button>
+
+                <button onClick={() => response(4)}>
+                <span >La fuente de los deseos</span>
+              </button>
+
             </div>
           </div>
         

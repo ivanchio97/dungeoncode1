@@ -60,7 +60,7 @@
     background-color:#12474C;
     border: none;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
 }
 .options button:hover{
@@ -72,6 +72,9 @@
 }
 .options button .yes{
     color: greenyellow;
+}
+.options button:active {
+    font-size: 120%;
 }
 .info2{
     font-size: 20px;
@@ -125,4 +128,7 @@
 }
 .green{
     color: greenyellow;
+}
+.info .portal{
+    margin-top: 14px;
 }
