@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import {Data} from '../contexts/DataProvider'
 import confetti from 'canvas-confetti'
 import {toast} from 'react-toastify'
@@ -13,12 +13,28 @@ const EasyCode = ({show,setShow}) =>{
   const [var1, setVar1] = useState(letters[ran1])
   const [var2, setVar2] = useState(letters[ran2])
   const [varOp, setVarOp] = useState(operators[ran3])
-  const [total, setTotal] = useState(Math.floor(Math.random()*100)+5)
+  const [total, setTotal] = useState(Math.floor(Math.random()*100)+20)
   const {dataPlayer, setDataPlayer} = useContext(Data)
-  const [input1, setInput1] = useState(0)
   const [input2, setInput2] = useState(0)
   const [showCodeModal, setShowCodeModal] = useState(show)
-  const [keys, setKeys] = useState(0)
+  const [valor2, setValor2] = useState(Math.floor(Math.random()*100)+4)
+  const [valor1, setValor1] = useState(Math.floor(Math.random()*20)+2)
+
+  useEffect(()=>{
+    if(varOp == "+"){
+      setTotal(valor2 + valor1)
+    }
+    else if(varOp == "-"){
+      setTotal(valor2 - valor1)
+    }
+    else if(varOp == "*"){
+      setTotal(valor2 * valor1)
+    }
+    else if(varOp == "/"){
+      setTotal(valor2 / valor1)
+    }
+
+  },[])
 
   function lanzarError(){
     const Shape1 = confetti.shapeFromText({ text: "❌", scalar: 4 })
@@ -42,19 +58,19 @@ const EasyCode = ({show,setShow}) =>{
     let calc = 0;
     switch(varOp){
       case '+':
-        calc = Number(input1) + Number(input2);
+        calc = Number(valor2) + Number(input2);
       break;
 
       case '-':
-        calc = Number(input1) - Number(input2);
+        calc = Number(valor2) - Number(input2);
       break;
 
       case '/':
-        calc = Number(input1) / Number(input2);
+        calc = Number(valor2) / Number(input2);
       break;
 
       case '*':
-        calc = Number(input1) * Number(input2);
+        calc = Number(valor2) * Number(input2);
       break;
     }
 
@@ -94,7 +110,7 @@ const EasyCode = ({show,setShow}) =>{
   return (
     <div className='code'>
       <h4 className='instructions' >Completa el código para que en <br/> pantalla se muestre el valor de <strong className='total' >{total}</strong></h4>
-      <div><p>{var1}</p>=<input className='input-short' type='number' onChange={(e)=>setInput1(e.target.value)} value={input1} /></div>
+      <div><p>{var1}</p>= <p>{valor2}</p> </div>
       <div><p>{var2}</p>=<input className='input-short' type = 'number' onChange={(e)=>setInput2(e.target.value)} value={input2} /></div>
       <div><p>total</p>=<p>{var1}</p><p className='operator'>{varOp}</p><p>{var2}</p></div>
       <div><p className='print'>print</p>(total)</div>

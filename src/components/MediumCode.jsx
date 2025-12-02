@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import {Data} from '../contexts/DataProvider'
 import confetti from 'canvas-confetti'
 import {toast} from 'react-toastify'
@@ -21,6 +21,24 @@ const MediumCode = ({show,setShow}) =>{
   const [input3, setInput3] = useState("")
   const [showCodeModal, setShowCodeModal] = useState(show)
   const [simbolo, setSimbolo] = useState("")
+  const [valor2, setValor2] = useState(Math.floor(Math.random()*100)+4)
+  const [valor1, setValor1] = useState(Math.floor(Math.random()*6)+2)
+
+  useEffect(()=>{
+      if(varOp == "+"){
+        setTotal(valor2 + valor1)
+      }
+      else if(varOp == "-"){
+        setTotal(valor2 - valor1)
+      }
+      else if(varOp == "*"){
+        setTotal(valor2 * valor1)
+      }
+      else if(varOp == "/"){
+        setTotal(valor2 / valor1)
+      }
+  
+    },[])
 
   function lanzarError(){
     const Shape1 = confetti.shapeFromText({ text: "❌", scalar: 4 })
@@ -58,22 +76,22 @@ const MediumCode = ({show,setShow}) =>{
     let calc = 0;
     switch(varOp){
       case '+':
-        calc = Number(input1) + Number(input2);
+        calc = Number(valor2) + Number(input2);
         
       break;
 
       case '-':
-        calc = Number(input1) - Number(input2);
+        calc = Number(valor2) - Number(input2);
         
       break;
 
       case '/':
-        calc = Number(input1) / Number(input2);
+        calc = Number(valor2) / Number(input2);
         
       break;
 
       case '*':
-        calc = Number(input1) * Number(input2);
+        calc = Number(valor2) * Number(input2);
         
       break;
     }
@@ -114,7 +132,7 @@ const MediumCode = ({show,setShow}) =>{
   return (
     <div className='code'>
       <h4 className='instructions' >Completa el código para que en <br/> pantalla se muestre el valor de <strong className='total' >{total}</strong></h4>
-      <div> <p>{var1}</p>=<input className='input-short' type="text" onChange={(e)=>setInput1(e.target.value)} value={input1} /> </div>
+      <div><p>{var1}</p>= <p>{valor2}</p> </div>
       <div> <p>{var2}</p>=<input className='input-short' type="text" onChange={(e)=>setInput2(e.target.value)} value={input2} /> </div>
       <div><p>total</p>=<p>{var1}</p><p className='operator'>{varOp}</p><p>{var2}</p></div>
       <div><p>{"if total"}</p> <input className='input-short' type="text" onChange={(e)=>setInput3(e.target.value)} value={input3} />{comparador}<p>{":"}</p> </div>

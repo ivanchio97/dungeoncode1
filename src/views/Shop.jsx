@@ -22,19 +22,31 @@ const Shop = () => {
     const {dataPlayer, setDataPlayer} = useContext(Data)
     const [tienda, setTienda] = useState([])
     
-    useEffect(()=>{
-      const randomshop = Math.floor(Math.random()*3)+4
-      setDataPlayer(prev=>({
-        ...prev,
-        shop: randomshop
-      }))
-      const seleccion = plantilla.map(()=>{
-        const rand = Math.floor(Math.random()*productos.length)
-        return productos[rand]
-      })
-      setTienda(seleccion)
+useEffect(() => {
+  const randomshop = Math.floor(Math.random() * 3) + 4;
+  setDataPlayer(prev => ({
+    ...prev,
+    shop: randomshop
+  }));
 
-    },[])
+  const seleccion = [];
+  const usados = new Set();
+
+  plantilla.forEach(() => {
+    let rand = Math.floor(Math.random() * productos.length);
+
+    // evitar repetidos
+    while (usados.has(rand)) {
+      rand = Math.floor(Math.random() * productos.length);
+    }
+
+    usados.add(rand);
+    seleccion.push(productos[rand]);
+  });
+
+  setTienda(seleccion);
+}, []);
+
 
     function comprar(item){
       if (dataPlayer.coins >= item.costo ){
