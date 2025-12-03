@@ -4,31 +4,21 @@ import '../styles/Shop.css'
 import PlayerData from '../components/PlayerData'
 import doorImage from '../assets/puerta.png';
 import { Data } from '../contexts/DataProvider';
+import cat from '../assets/cat.gif'
 
-const Shop = () => {
+const CatShop = () => {
     const navigate = useNavigate()
     const productos = [
-        { id: 1, nombre: "Vida extra", icono: "💖", costo: 20 , desc: "Otorga una vida extra. No olvides activarla primero", compra: true },
-        { id: 2, nombre: "Llave", icono: "🔑", costo: 50, desc: "Puedes abrir cualquier puerta", compra: true },
-        { id: 3, nombre: "Cofre x2", icono: "🧱", costo: 10 , desc: "Duplica las monedas del proximo cofre que abras", compra: true },
-        { id: 4, nombre: "Arco", icono: "🏹", costo: 25, desc: "Elimina directamente al siguiente slime que elijas", compra: true },
-        { id: 5, nombre: "Gamepad", icono: "🎮", costo: 20, desc: "Aumenta la probabilidad general de encontrar más eventos", compra: true },
-        { id: 6, nombre: "Avance", icono: "⏩", costo: 10, desc: "Disminuye en 1 la cercanía a la proxima tienda", compra: true },
-        { id: 7, nombre: "Portal", icono: "🌀", costo: 20, desc: "Lleva directamente al portal cuando se activa", compra: true },
-        { id: 8, nombre: "Tienda", icono: "💰", costo: 5, desc: "Lleva directamente a la tienda", compra: true },
-        { id: 9, nombre: "?", icono: "🐱", costo: 1, desc: "?", compra: true }
+        { id: 101, nombre: "50 monedas", icono: "💸", costo: 1 , desc: "Otorga 50 monedas", compra: true },
+        { id: 102, nombre: "Candado", icono: "🔐", costo: 1, desc: "Agrega dos llaves a tu inventario", compra: true },
+        { id: 103, nombre: "duplicador de monedas", icono: "💎", costo: 2, desc: "Duplica tus monedas", compra: true },
         
     ]
-    const plantilla = [{},{},{}, {}]
+    const plantilla = [{},{},{}]
     const {dataPlayer, setDataPlayer} = useContext(Data)
     const [tienda, setTienda] = useState([])
     
 useEffect(() => {
-  const randomshop = Math.floor(Math.random() * 3) + 4;
-  setDataPlayer(prev => ({
-    ...prev,
-    shop: randomshop
-  }));
 
   const seleccion = [];
   const usados = new Set();
@@ -50,19 +40,15 @@ useEffect(() => {
 
 
     function comprar(item){
-      if (dataPlayer.coins >= item.costo ){
         setDataPlayer(prev => ({
           ...prev,
           inventory: [...prev.inventory, {
             ...item,
             uid: crypto.randomUUID()
           }],
-          coins: prev.coins - item.costo
-        }) )
-      }
-      else{
-        alert("¡No tienes suficientes monedas!")
-      }
+          lives: prev.lives - item.costo
+        }))
+      
     }
     function exitShop(){
       navigate("/puente", {replace: true})
@@ -71,19 +57,19 @@ useEffect(() => {
   return (
     <div className='level2'>
       <PlayerData />
-      <h2>¡Bienvenido a la tienda! 🤑</h2>
+      <img src={cat} className='cat' />
+      <h2>¡Bienvenido a la tienda de Pibble! 😺</h2>
       <div className="door-shop">
         <img src={doorImage} alt="" onClick={exitShop} />
       </div>
-      <div className='tienda'>
-        
+      <div className='tienda2'>
         {
           tienda.map((item)=>{
             return(
               <div className='item'>
                 <h2 className='icono'>{item.icono}</h2>
                 <strong className='nombre'>{item.nombre}</strong>
-                <strong className='costo'>${item.costo}</strong>
+                <strong className='costo'>{item.costo} 💖 </strong>
                 <small>{item.desc}</small>
                 <button onClick={()=>comprar(item)} >COMPRAR</button>
               </div>
@@ -96,4 +82,4 @@ useEffect(() => {
   )
 }
 
-export default Shop
+export default CatShop

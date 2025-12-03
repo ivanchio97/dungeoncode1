@@ -14,6 +14,7 @@ import EventRoom3 from './views/events/EventRoom3'
 import Boss1 from './views/bosses/Boss1'
 import EventRoom4 from './views/events/EventRoom4'
 import EventRoom5 from './views/events/EventRoom5'
+import CatShop from './views/CatShop'
 
 
 function App() {
@@ -38,6 +39,7 @@ function Wrapper(){
             <Route path='/' element={<Menu />} />
             <Route path='/game' element={<Room />} key={dataPlayer.level} />
             <Route path="/shop" element={<Shop />} />
+            <Route path="/catShop" element={<CatShop />} />
             <Route path='/event' element={<EventRoom />} />
             <Route path='/event2' element = {<EventRoom2 />} />
             <Route path='/stringsEvent' element = {<StringsEvent />} />

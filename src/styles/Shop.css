@@ -22,6 +22,7 @@
     text-shadow: 3px 5px 10px gold;
 }
 
+
 .tienda{
     display: flex;
     height: 500px;
@@ -87,4 +88,33 @@
 }
 .door-shop:hover{
     cursor: url('../assets/hand.png'), auto;
+}
+.tienda2{
+    display: flex;
+    height: 500px;
+    width: 1000px;
+    background-color: #011504;
+    border: 15px solid #4F8F2A;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+    font-size: 30px;
+}
+.tienda2 .item{
+    height: 290px;
+    width: 210px;  
+    background-color: #01320a;
+    border: 3px solid white;
+    text-align: center;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 18px 17px;
+}
+.cat{
+    position: absolute;
+    left:0px;
+    bottom: 0px;
+    width: 25%;
 }

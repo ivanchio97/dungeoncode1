@@ -4,6 +4,7 @@ import heartImage from '../assets/heart.gif'
 import '../styles/playerData.css'
 import {Data} from '../contexts/DataProvider'
 import { useNavigate } from 'react-router-dom'
+import GameOver from './GameOver'
 
 
 const PlayerData = ()=>{
@@ -90,6 +91,53 @@ const PlayerData = ()=>{
         navigate('/shop')
         filtrarItem(item)
       break;
+      case 9:
+        alert("😸")
+        navigate('/catShop')
+        filtrarItem(item)
+      break;
+
+      case 101:
+        setDataPlayer(prev => ({
+          ...prev,
+          coins: prev.coins + 50
+        }))
+        alert("¡Item usado! Obtuviste 50 monedas")
+        filtrarItem(item)
+      break;
+
+      case 102:
+        setDataPlayer(prev => {
+          const newKeys = [
+            {
+              id: 2, nombre: "Llave", icono: "🔑", costo: 50, desc: "Puedes abrir cualquier puerta", compra: true,
+              uid: crypto.randomUUID()
+            },
+            {
+              id: 2, nombre: "Llave", icono: "🔑", costo: 50, desc: "Puedes abrir cualquier puerta", compra: true,
+              uid: crypto.randomUUID()
+            }
+          ]
+
+          const filtered = prev.inventory.filter(i => i.uid !== item.uid)
+
+          return {
+            ...prev,
+            inventory: [...filtered, ...newKeys]
+          }
+        })
+        
+        alert("¡Item usado! Se han agregado dos llaves a tu inventario")
+      break;
+      case 103:
+        setDataPlayer(prev => ({
+          ...prev,
+          coins: prev.coins * 2
+        }))
+        alert("¡Item usado! ¡Se han duplicado tus monedas!")
+        filtrarItem(item)
+      break;
+
     }
     
   }
@@ -97,16 +145,16 @@ const PlayerData = ()=>{
   const {dataPlayer, setDataPlayer} = useContext(Data)
   return (
     <div className='player-data'>
-
+      { dataPlayer.lives < 1 ?  <  GameOver /> : <></> }
       <div className='profile-photo'>{dataPlayer.icon}</div>
       <div>
         <div className='data-distribution'>
           <img src={coinImage} alt="" className='player-data-img' />
-          <h3> × {dataPlayer.coins}</h3>
+          <h3> {"x"} {dataPlayer.coins}</h3>
         </div>
         <div className='data-distribution'>
           <img src={heartImage} alt="" className='player-data-img' />
-          <h3> × {dataPlayer.lives} </h3>
+          <h3> {"x"} {dataPlayer.lives} </h3>
         </div>
       </div>
       <div className='inventory'>
