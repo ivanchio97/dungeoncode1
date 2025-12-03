@@ -48,7 +48,7 @@ useEffect(() => {
           }],
           lives: prev.lives - item.costo
         }))
-      
+      alert("Le diste una vida a Pibble...Riesgo...recompensa")
     }
     function exitShop(){
       navigate("/puente", {replace: true})
