@@ -1,66 +1,119 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import '../../styles/Boss1.css'
 import PlayerData from '../../components/PlayerData'
+import SlimeGreen from '../../components/SlimeGreen'
+import SlimeBlue from '../../components/SlimeBlue'
+import SlimeRed from '../../components/SlimeRed'
+import { Data } from '../../contexts/DataProvider'
+import CodeModal from '../CodeModal'
+import boss from '../../assets/slimes/morado.gif'
 
 const Boss1 = () => {
 
+  const { dataPlayer, setDataPlayer } = useContext(Data);
   const [lives, setLives] = useState(3)
-  const [colors, setColors] = useState(["red","green","blue","blueviolet"])
   const [mode, setMode] = useState(1)
   const [answer, setAnswer] = useState("")
-  const [timer, setTimer] = useState(10)
+  const [slimeLeft, setSlimeLeft] = useState("")
+  const [slimeRight, setSlimeRight] = useState("")
+  const [slimeStates, setSlimeStates] = useState([true,true])
+  const [showCodeModal, setShowCodeModal] = useState(false);
+  const [conteo1, setConteo1] = useState(20)
+  const [conteo2, setConteo2] = useState(20)
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      // evitar teclas especiales
-      if (e.key.length === 1) {
-        setAnswer(prev => prev + e.key);
+  useEffect(()=>{
+    const timer = setInterval(()=>{
+      if(slimeStates[0] == false){
+        setConteo1(prev => {
+          if(prev > 0){
+            return prev - 1
+          }
+          else{
+            generarSlime(1)
+            return 25
+          }
+        }
+      )
       }
-
-      // borrar
-      if (e.key === "Backspace") {
-        setAnswer(prev => prev.slice(0, -1));
+      if(slimeStates[1] == false){
+        setConteo2(prev => {
+          if(prev > 0){
+            return prev - 1
+          }
+          else{
+            generarSlime(2)
+            return 25
+          }
+        }
+      )
       }
-    };
+    },1000)
 
-    window.addEventListener("keydown", handleKeyDown);
+    return () => clearInterval(timer);
 
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  },[slimeStates])
 
+    const slimes = [
+    {
+      number: 1,
+      component: <SlimeGreen />,
+    },
+    {
+      number: 2,
+      component: <SlimeBlue />,
+    },
+    {
+      number: 3,
+      component: <SlimeRed />,
+    },
+  ];
 
-  const modeColor = (
-    <div className='colors'>
-      <div className='timer'>{timer}</div>
-      {
-        colors.map((element)=>{
-          return (
-            <div style={{background: element}} className='item-color'>
-              👀
-            </div>
-          )
-        })
-      }
-    </div>
-  )
+  useEffect(()=>{
+    generarSlime(1)
+    generarSlime(2)
+  },[])
+
+  function generarSlime(number){
+    const copy = slimeStates
+    if(number == 1){
+      const s1 = Math.floor(Math.random()*3)
+      setSlimeLeft(slimes[s1])
+      copy[0] = true;
+    }
+    if(number == 2){
+      const s2 = Math.floor(Math.random()*3)
+      setSlimeRight(slimes[s2])
+      copy[1] = true;
+    }
+
+    setSlimeStates(copy)
+    
+  }
+  function deleteSlime(ind,number){
+    setShowCodeModal(true)
+        setDataPlayer((prev) => ({
+      ...prev,
+      actualEnemy: number,
+    }));
+    const newstates = [...slimeStates];
+    newstates[ind] = false;
+    setSlimeStates(newstates);
+  }
 
   return (
     <div className='boss-level'>
         <PlayerData />
-      <div className='boss-img'>
-        <div className='boss-lives'>
-          {
-            Array.from({length: lives}).map(( _ , i )=>{
-              return <div> 💖 </div>
-            })
-          }
+        {showCodeModal && (
+          <CodeModal show={showCodeModal} setShow={setShowCodeModal} />
+        )}
+        <div>{lives}</div>
+        <div className='boss'> <img src={boss} alt="" /> </div>
+        <div>{conteo1}</div>
+        <div>{conteo2}</div>
+        <div className='slimes'>
+         { slimeStates[0] && <div onClick={()=>deleteSlime(0 ,slimeLeft.number)} >{slimeLeft.component}</div> }
+         { slimeStates[1] && <div onClick={()=>deleteSlime(1 ,slimeRight.number)} >{slimeRight.component}</div> }
         </div>
-        { mode == 1 ? <div className='boss-color'>👀</div> : modeColor  }
-      </div>
-      <div className='boss-game'>
-        <h3 className='boss-question'>Pregunta</h3>
-        <div className='boss-input'>{answer}</div>
-      </div>
     </div>
   )
 }
