@@ -7,19 +7,20 @@ import SlimeRed from '../../components/SlimeRed'
 import { Data } from '../../contexts/DataProvider'
 import CodeModal from '../CodeModal'
 import boss from '../../assets/slimes/morado.gif'
+import BossCode1 from '../../components/BossCode1'
+import { toast } from 'react-toastify'
 
 const Boss1 = () => {
 
   const { dataPlayer, setDataPlayer } = useContext(Data);
   const [lives, setLives] = useState(3)
-  const [mode, setMode] = useState(1)
-  const [answer, setAnswer] = useState("")
   const [slimeLeft, setSlimeLeft] = useState("")
   const [slimeRight, setSlimeRight] = useState("")
   const [slimeStates, setSlimeStates] = useState([true,true])
   const [showCodeModal, setShowCodeModal] = useState(false);
   const [conteo1, setConteo1] = useState(20)
   const [conteo2, setConteo2] = useState(20)
+  const [show, setShow] = useState(false)
 
   useEffect(()=>{
     const timer = setInterval(()=>{
@@ -73,6 +74,15 @@ const Boss1 = () => {
     generarSlime(2)
   },[])
 
+    function showToast(message){
+      toast.info(message, {
+        position: 'top-right',
+        autoClose: 3000,
+        closeOnClick: true,
+        theme: 'colored',
+      });
+    }
+
   function generarSlime(number){
     const copy = slimeStates
     if(number == 1){
@@ -99,17 +109,32 @@ const Boss1 = () => {
     newstates[ind] = false;
     setSlimeStates(newstates);
   }
+  function luchar(){
+    if( !slimeStates[0]==false || !slimeStates[1]==false ){
+      showToast("Debes vencer a los slimes primero!")
+    }
+    else{
+      setShow(true)
+    }
+  }
 
   return (
     <div className='boss-level'>
         <PlayerData />
+        {show && <BossCode1 show={show} setShow={setShow} /> }
         {showCodeModal && (
           <CodeModal show={showCodeModal} setShow={setShowCodeModal} />
         )}
-        <div>{lives}</div>
-        <div className='boss'> <img src={boss} alt="" /> </div>
-        <div>{conteo1}</div>
-        <div>{conteo2}</div>
+        <div className='boss-lives'>
+          {
+            Array.from({length: lives}).map((_,i)=>{
+              return <p key={i}>💜</p>
+            })
+          }
+        </div>
+        <div className='boss' onClick={luchar} > <img src={boss} alt="" /> </div>
+        <div className='contador1' >{conteo1}</div>
+        <div className='contador2'>{conteo2}</div>
         <div className='slimes'>
          { slimeStates[0] && <div onClick={()=>deleteSlime(0 ,slimeLeft.number)} >{slimeLeft.component}</div> }
          { slimeStates[1] && <div onClick={()=>deleteSlime(1 ,slimeRight.number)} >{slimeRight.component}</div> }

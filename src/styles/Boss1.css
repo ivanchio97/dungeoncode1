@@ -11,7 +11,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
+  gap:-5px;
+  position: relative;
 }
 .slimes{
     display: flex;
@@ -37,4 +38,42 @@
 }
 .boss:hover{
   cursor: url('../assets/hand.png'), auto;
+}
+.boss-lives{
+  display: flex;
+  gap:10px;
+  font-size: 40px;
+  text-shadow: 5px 5px 10px black;
+}
+.contador1{
+  position: absolute;
+  z-index: 20px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #5311BD;
+  left: 530px;
+  top:390px;
+  height: 70px;
+  width: 70px;
+  border: 10px solid #14032E;
+  border-radius: 10px;
+  font-weight: bold;
+  z-index: 3;
+}
+.contador2{
+  position: absolute;
+  z-index: 20px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #5311BD;
+  right: 530px;
+  top:390px;
+  height: 70px;
+  width: 70px;
+  border: 10px solid #14032E;
+  border-radius: 10px;
+  font-weight: bold;
+  z-index: 3;
 }
