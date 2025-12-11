@@ -5,9 +5,9 @@ import {toast} from 'react-toastify'
 import '../styles/CodeModal.css'
 import {preguntasBoss} from '../views/bosses/preguntasBoss'
 
-const BossCode1 = ({show,setShow}) =>{
+const BossCode1 = ({show,setShow, setLives}) =>{
 
-
+  const { dataPlayer, setDataPlayer } = useContext(Data);
   const [input, setInput] = useState("")
   const [question, setQuestion] = useState("")
   const [number, setNumber] = useState(0)
@@ -62,10 +62,20 @@ const BossCode1 = ({show,setShow}) =>{
         lanzarConfetti()
         setShow(false)
         showToast("!Correcto! Has ganado 10 monedas! 🤩","success")
+        setLives(prev => prev-1)
+        setDataPlayer(prev=>({
+          ...prev,
+          coins: prev.coins + 10
+        }))
       }
       else{
         lanzarError()
         showToast("Incorrecto! El slime te ha atacado! 😥 ","error")
+        setInput("")
+                setDataPlayer(prev=>({
+          ...prev,
+          lives: prev.lives - 1
+        }))
       }
       }
 

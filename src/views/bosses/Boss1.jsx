@@ -18,9 +18,10 @@ const Boss1 = () => {
   const [slimeRight, setSlimeRight] = useState("")
   const [slimeStates, setSlimeStates] = useState([true,true])
   const [showCodeModal, setShowCodeModal] = useState(false);
-  const [conteo1, setConteo1] = useState(20)
-  const [conteo2, setConteo2] = useState(20)
+  const [conteo1, setConteo1] = useState(25)
+  const [conteo2, setConteo2] = useState(25)
   const [show, setShow] = useState(false)
+  const [defeated, setDefeated] = useState(true)
 
   useEffect(()=>{
     const timer = setInterval(()=>{
@@ -53,6 +54,12 @@ const Boss1 = () => {
     return () => clearInterval(timer);
 
   },[slimeStates])
+  useEffect(()=>{
+    if(lives < 1){
+      showToast("¡Bien has derrotado al slime!")
+      setDefeated(true)
+    }
+  },[lives])
 
     const slimes = [
     {
@@ -100,6 +107,12 @@ const Boss1 = () => {
     
   }
   function deleteSlime(ind,number){
+    toast.warning("Rápido! Vence al slime antes de que se genere otro!", {
+        position: 'top-right',
+        autoClose: 3000,
+        closeOnClick: true,
+        theme: 'colored',
+      });
     setShowCodeModal(true)
         setDataPlayer((prev) => ({
       ...prev,
@@ -121,7 +134,9 @@ const Boss1 = () => {
   return (
     <div className='boss-level'>
         <PlayerData />
-        {show && <BossCode1 show={show} setShow={setShow} /> }
+        {defeated && <div className='premio-jefe'>🎁</div> }
+      { !defeated && <>
+        {show && <BossCode1 show={show} setShow={setShow} setLives = {setLives} /> }
         {showCodeModal && (
           <CodeModal show={showCodeModal} setShow={setShowCodeModal} />
         )}
@@ -132,13 +147,15 @@ const Boss1 = () => {
             })
           }
         </div>
-        <div className='boss' onClick={luchar} > <img src={boss} alt="" /> </div>
+         <div className='boss' onClick={luchar} > <img src={boss} alt="" /> </div>
         <div className='contador1' >{conteo1}</div>
         <div className='contador2'>{conteo2}</div>
         <div className='slimes'>
          { slimeStates[0] && <div onClick={()=>deleteSlime(0 ,slimeLeft.number)} >{slimeLeft.component}</div> }
          { slimeStates[1] && <div onClick={()=>deleteSlime(1 ,slimeRight.number)} >{slimeRight.component}</div> }
         </div>
+        </>
+       }
     </div>
   )
 }
