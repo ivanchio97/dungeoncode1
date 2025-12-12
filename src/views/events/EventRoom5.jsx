@@ -53,7 +53,7 @@ const EventRoom5 = () => {
       else{
         setGanado(false)
         setResultado(mensajes[contador])
-        setPrecio(prev => prev + 1)
+        setPrecio(prev => prev * 2)
         setProbabilidad(prev => prev + 5)
         setContador(prev => {{
           const calc = prev + 1
